@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "LoginQuestionnaire": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\mohamed-amine.ennadi\\source\\repos\\QuestionnaireProjet\\LoginQuestionnaire\\obj\\Debug\\net8.0-windows\\ref",
+      "remoteDebugEnabled": true
+    }
+  }
+}
