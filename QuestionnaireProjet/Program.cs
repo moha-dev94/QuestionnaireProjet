@@ -16,7 +16,8 @@ namespace gestionQuestionnaires
             Application.SetCompatibleTextRenderingDefault(false);
 
             // Démarrer le formulaire de connexion
-            Application.Run(new QuestionnaireForm());
+            Application.Run(new QuestionnaireFormModif()); // Celui que tu veux afficher
+
         }
     }
 }

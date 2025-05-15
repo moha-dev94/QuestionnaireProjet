@@ -19,18 +19,18 @@
             label4 = new Label();
             textboxLibelle = new TextBox();
             txtBoxNomTheme = new ComboBox();
+            btnGenererPdf = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewQuestions).BeginInit();
-            this.Load += new System.EventHandler(this.QuestionnaireFormModif_Load);
             SuspendLayout();
             // 
             // dataGridViewQuestions
             // 
-            dataGridViewQuestions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewQuestions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewQuestions.ColumnHeadersHeight = 34;
+            dataGridViewQuestions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewQuestions.Location = new Point(12, 25);
             dataGridViewQuestions.Name = "dataGridViewQuestions";
             dataGridViewQuestions.RowHeadersWidth = 62;
-            dataGridViewQuestions.Size = new Size(840, 373);
+            dataGridViewQuestions.Size = new Size(898, 373);
             dataGridViewQuestions.TabIndex = 0;
             dataGridViewQuestions.AutoSizeColumnsModeChanged += dataGridViewQuestions_AutoSizeColumnsModeChanged;
             dataGridViewQuestions.CellValueChanged += dataGridViewQuestions_CellValueChanged;
@@ -135,9 +135,20 @@
             txtBoxNomTheme.TabIndex = 16;
             txtBoxNomTheme.SelectedIndexChanged += txtBoxNomTheme_SelectedIndexChanged;
             // 
+            // button1
+            // 
+            btnGenererPdf.Location = new Point(358, 414);
+            btnGenererPdf.Name = "button1";
+            btnGenererPdf.Size = new Size(141, 34);
+            btnGenererPdf.TabIndex = 17;
+            btnGenererPdf.Text = "Générer le PDF";
+            btnGenererPdf.UseVisualStyleBackColor = true;
+            btnGenererPdf.Click += button1_Click;
+            // 
             // QuestionnaireFormModif
             // 
             ClientSize = new Size(1202, 459);
+            Controls.Add(btnGenererPdf);
             Controls.Add(txtBoxNomTheme);
             Controls.Add(textboxLibelle);
             Controls.Add(label4);
@@ -151,6 +162,7 @@
             Controls.Add(label1);
             Controls.Add(dataGridViewQuestions);
             Name = "QuestionnaireFormModif";
+            Load += QuestionnaireFormModif_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewQuestions).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -167,5 +179,8 @@
         private Label label4;
         private TextBox textboxLibelle;
         private ComboBox txtBoxNomTheme;
+        private Button btnGenererPdf;
+
+
     }
 }

@@ -45,7 +45,6 @@
             gridViewQuestionnaire.RowHeadersWidth = 62;
             gridViewQuestionnaire.Size = new Size(1000, 400);
             gridViewQuestionnaire.TabIndex = 0;
-            gridViewQuestionnaire.CellMouseDoubleClick += gridViewQuestionnaire_CellMouseDoubleClick;
             gridViewQuestionnaire.MouseDown += gridViewQuestionnaire_MouseDown;
             // 
             // QuestionnaireForm

@@ -10,8 +10,9 @@ namespace gestionQuestionnaires
         public LoginForm()
         {
             InitializeComponent();
-            string connectionString = "Server=localhost;Database=GestionQuestionnaires;Uid=root;Pwd=;";
-            connection = new MySqlConnection(connectionString);
+            string connectionStringOff = "Server=localhost;Database=GestionQuestionnaires;Uid=root;Pwd=;";
+            string connectionStringOn = "Server=104.40.137.99;Port=22260;Database=mohamedamine_ppedesktop;Uid=developer;Pwd=cerfal1313;";
+            connection = new MySqlConnection(connectionStringOn);
         }
 
         private void btnConnexion_Click(object sender, EventArgs e)

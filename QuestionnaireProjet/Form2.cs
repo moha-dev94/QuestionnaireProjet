@@ -3,7 +3,12 @@ using System.Drawing.Text;
 using gestionQuestionnaires;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
-
+using PdfSharp;
+using PdfSharp.Drawing;
+using PdfSharp.Fonts;
+using PdfSharp.Pdf;
+using PdfSharp.Quality;
+using PdfSharp.Snippets.Font;
 
 namespace gestionQuestionnaires
 {
@@ -21,7 +26,9 @@ namespace gestionQuestionnaires
         private int questionnaireId; // ID du questionnaire (0 pour un nouvel ajout)
         private bool estAjt; // Détermine si l'on ajoute ou modifie
         public bool estModif = false;
-       // string connString = "Server=localhost;Database=gestionquestionnaires;Uid=root;Pwd=;";
+        string connStringOff = "Server=localhost;Database=gestionquestionnaires;Uid=root;Pwd=;";
+        string connectionStringOn = "Server=104.40.137.99;Port=22260;Database=mohamedamine_ppedesktop;Uid=developer;Pwd=cerfal1313;";
+
         private int obtentionIDQuestionnaire()
         {
             try
@@ -194,7 +201,7 @@ namespace gestionQuestionnaires
                 adapter.Fill(table);
 
                 // Debug : affiche clairement le nombre de thèmes récupérés
-                MessageBox.Show($"Nombre de thèmes récupérés : {table.Rows.Count}");
+                //MessageBox.Show($"Nombre de thèmes récupérés : {table.Rows.Count}");
 
                 txtBoxNomTheme.DataSource = table;
                 txtBoxNomTheme.DisplayMember = "Nom";
@@ -710,7 +717,7 @@ namespace gestionQuestionnaires
                         command.Parameters.AddWithValue("@ID", questionId);
                         command.ExecuteNonQuery();
 
-                     //   rafData();
+                        //   rafData();
                     }
                     catch (Exception ex)
                     {
@@ -854,5 +861,20 @@ namespace gestionQuestionnaires
                 textBoxThemeID.Text = txtBoxNomTheme.SelectedValue.ToString();
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                Filter = "Fichiers PDF (*.pdf)|*.pdf",
+                Title = "Enregistrer le PDF",
+                FileName = "Questionnaires_" + DateTime.Now.ToString("yyyyMMdd") + ".pdf"
+            };
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                PdfGenerator pdfGenerator = new PdfGenerator(connection);
+                pdfGenerator.GenerateQuestionnairesPdf(saveFileDialog.FileName);
+            }
+        }
     }
 }

@@ -11,7 +11,9 @@ namespace gestionQuestionnaires
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            // Démarrer le formulaire de connexion
+            // Désactiver le scaling DPI automatique
+            Application.SetHighDpiMode(HighDpiMode.DpiUnaware);
+
             Application.Run(new LoginForm());
         }
     }

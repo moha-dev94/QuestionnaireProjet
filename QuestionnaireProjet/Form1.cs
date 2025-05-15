@@ -10,8 +10,9 @@ namespace gestionQuestionnaires
         public QuestionnaireForm()
         {
             InitializeComponent();
-            string connectionString = "Server=localhost;Database=gestionquestionnaires;Uid=root;Pwd=;";
-            connection = new MySqlConnection(connectionString);
+            string connectionStringOff = "Server=localhost;Database=gestionquestionnaires;Uid=root;Pwd=;";
+            string connectionStringOn = "Server=104.40.137.99;Port=22260;Database=mohamedamine_ppedesktop;Uid=developer;Pwd=cerfal1313;";
+            connection = new MySqlConnection(connectionStringOn);
 
             // Initialisation du menu contextuel
             InitContextMenu();
@@ -217,22 +218,5 @@ namespace gestionQuestionnaires
                 MessageBox.Show($"Colonnes disponibles : {columnNames}", "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);*/
             }
         }
-
-
-        private void gridViewQuestionnaire_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-                 if (e.RowIndex >= 0)//vérifier que l'index est valide
-                 {
-                     //Récupérer les données de la ligne séléctionnée
-                     DataGridViewRow selectLigne = gridViewQuestionnaire.Rows[e.RowIndex];
-                     int id = Convert.ToInt32(selectLigne.Cells["ID"].Value); //Recup l'id
-                     string libelle = selectLigne.Cells["Nom du Questionnaire"].Value.ToString();//récup le libeller
-                     string theme = selectLigne.Cells["Thème"].Value.ToString(); // Récupérer le thème
-
-                     // Créer une instance de Form3 et passer les données
-                     var form3 = new QuestionnaireResponseForm(id, libelle, theme);
-                     form3.ShowDialog(); // Afficher Form3 comme une fenêtre modale
-                 }
         }
     }
-}
